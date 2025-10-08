@@ -18,8 +18,8 @@ pipeline {
                     echo "Building the Docker image..."
                     withCredentials([usernamePassword(credentialsId: 'docker-hub-credential', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
                         sh 'docker build -t niputu17/demo-app:jma-2.0 .'
-                        sh 'echo \$PASS | docker login -u \$USER --password-stdin'
-                        sh 'docker push niputu/demo-app:jma-2.0'
+                        sh "echo \$PASS | docker login -u \$USER --password-stdin"
+                        sh 'docker push niputu17/demo-app:jma-2.0'
                     }
                 }
             }
